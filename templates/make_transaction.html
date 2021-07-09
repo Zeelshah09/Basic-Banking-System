@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Make Transaction{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid px-0">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"></div>
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img src="https://source.unsplash.com/eBWzFKahEaU/1080x300" class="d-block w-100 px-0" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center my-3"></h1>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="mbr-white col-md-10">
+            <h2 class="mbr-section-title align-center  pb-3 mbr-fonts-style display-1">Transfer Money </h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row-cols-1">
+        <label for="name" class="form-label">Sender</label>
+        <select class="form-select" aria-label="Default select example" id="sname" name="sname">
+            {% for c in vc %}
+            <option value="" disabled selected hidden>Select Your Name</option>
+            <option value="{{c.name}}">{{c.name}}</option>
+            {% endfor %}
+        </select>
+        <label for="name" class="form-label">Reciever</label>
+        <select class="form-select" aria-label="Default select example" id="rname" name="rname">
+            {% for c in vc %}
+            <option value="" disabled selected hidden>Select Your Name</option>
+            <option value="{{c.name}}">{{c.name}} </option>
+            
+            {% endfor %}
+        </select>
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" id="amount" name="amount">
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4 ">Transfer Money</button>
+
+
+    </form>
+
+
+</div>
+<div class="mb-5">
+</div>
+
+{% endblock body %}
